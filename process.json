@@ -1,0 +1,45 @@
+{
+    "apps": [
+        {
+            "name": "app1",
+            "script": "./app.js",
+            "watch": true,
+            "env": {
+                "PORT": "5001"
+            }
+        },
+        {
+            "name": "app2",
+            "script": "./app.js",
+            "watch": true,
+            "env": {
+                "PORT": "5002"
+            }
+        },
+        {
+            "name": "app3",
+            "script": "./app.js",
+            "watch": true,
+            "env": {
+                "PORT": "5003"
+            }
+        },
+        {
+            "name": "app4",
+            "script": "./app.js",
+            "watch": true,
+            "env": {
+                "PORT": "5004"
+            }
+        },
+        {
+            "name": "app0",
+            "script": "./app.js",
+            "watch": true,
+            "env": {
+                "PORT": "5000"
+            }
+        }
+
+    ]
+}
