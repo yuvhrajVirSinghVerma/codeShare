@@ -7,7 +7,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = process.env.POSTGRES_URL
+  url      = "postgresql://postgres:iambruce@localhost:5432/codingRoom"
 }
 
 model Rooms {

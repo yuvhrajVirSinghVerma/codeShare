@@ -36,7 +36,7 @@ const Login = () => {
     >
       {/* //this id should be same as in backend id  */}
       <GoogleOAuthProvider 
-      clientId={process.env.CLIENT_ID}>
+      clientId={"659897329083-2p6sep3i6ie0quu35olvfrt7lfhccbu2.apps.googleusercontent.com"}>
         <GoogleLogin
           render={(props) => (
             <GoogleButton type="dark" onClick={props.onClick} />
