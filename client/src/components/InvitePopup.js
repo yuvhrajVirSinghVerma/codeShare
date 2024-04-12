@@ -39,12 +39,14 @@ const InvitePopup = ({ open, handleChange, room }) => {
   const [recipient, setRecipient] = useState("");
 
   const handleSubmit = async () => {
+  try {
     const result = await roomApi.addMember(
       room.roomid,
       room.title,
       recipient,
       user.name
     );
+    console.log("result ",result)
     if (result.data.status === "ok") {
       toast.success(`Invitation Successful!`, {
         position: "top-right",
@@ -66,6 +68,18 @@ const InvitePopup = ({ open, handleChange, room }) => {
         progress: undefined,
       });
     }
+  } catch (error) {
+    console.log("email error ",error)
+    toast.error(`Invitation Failed!`, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+    });
+  }
   };
   return (
     <div>

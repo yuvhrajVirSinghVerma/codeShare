@@ -10,6 +10,7 @@ const memberRoute = Router();
 
 memberRoute.post("/add", async (req, res) => {
   const { roomid, recipient, user, roomname } = req.body;
+  console.log("req.body ",req.body)
 
   try {
     const result = await prisma.collaborator.create({
@@ -18,9 +19,17 @@ memberRoute.post("/add", async (req, res) => {
         user: recipient,
       },
     });
-    await sendInvitation(roomid, roomname, recipient, user);
+     let msg= await sendInvitation(roomid, roomname, recipient, user);
+     console.log("msg ",msg)
+     if(msg.error){
+     console.log("error ",msg)
+
+      throw new Error("error")
+     }
     res.status(201).send({ status: "ok" });
   } catch (error) {
+    console.log("catch error ")
+
     res.status(404).send({ status: "failed" });
   }
 });

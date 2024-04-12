@@ -46,6 +46,7 @@ roomRoute.get("/list", async (req, res) => {
     });
     res.status(200).send({ status: "ok", data: result });
   } catch (error) {
+    console.log("error ",error)
     res.status(404).send({ status: "failed", message: "Not found" });
   }
 });
