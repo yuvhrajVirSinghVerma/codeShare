@@ -3,7 +3,7 @@ import axios from "axios";
 const host = "http://localhost:3000";
 
 const getRoomValue = (roomid, user) => {
-  return axios.get("/room/data", { params: { roomid, user } });
+  return axios.get(`${host}/room/data`, { params: { roomid, user } });
 };
 
 const createRoom = (title, roomid, user) => {
