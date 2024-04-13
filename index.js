@@ -34,17 +34,17 @@ app.use(express.json());
 app.use("/room", roomRoute);
 app.use("/member", memberRoute);
 
-app.use(express.static(path.join(__dirname, "client/build")));
+// app.use(express.static(path.join(__dirname, "client/build")));
 
 const port = process.env.PORT || 3000;
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname + "/client/build/index.html"));
-});
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname + "/client/build/index.html"));
+// });
 
-// app.get('/',(req,res)=>{
-//   res.send("Hello")
-// })
+app.get('/',(req,res)=>{
+  res.send("Hello")
+})
 
 const server = app.listen(port, () => {
   console.log(`connected at port ${port}`);

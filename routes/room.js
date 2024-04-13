@@ -31,7 +31,7 @@ roomRoute.get("/data", async (req, res) => {
 
 roomRoute.get("/list", async (req, res) => {
   const { user } = req.query;
-  console.log("query ",query)
+  console.log("query list",query)
 
   try {
     const result = await prisma.rooms.findMany({

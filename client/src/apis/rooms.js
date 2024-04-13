@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const host = "https://codeshare-4.onrender.com";
+const host = "http://localhost:3000";
 
 const getRoomValue = (roomid, user) => {
   return axios.get(`${host}/room/data`, { params: { roomid, user } });
@@ -25,17 +25,18 @@ const addMember = (roomid, roomname, recipient, user) => {
 };
 
 const authMember = (roomid, user) => {
-  return axios.get("/member/auth", {
+  return axios.get(`${host}/member/auth`, {
     params: { roomid, user },
   });
 };
 
 const deleteRoom = (roomid) => {
-  return axios.delete("/room/delete", { data: { roomid } });
+  return axios.delete(`${host}/room/delete`, { data: { roomid } });
 };
 
 const getAllRooms = (user) => {
-  return axios.get("/room/list", { params: { user } });
+  console.log("get rooms ",user)
+  return axios.get(`${host}/room/list`, { params: { user } });
 };
 
 export default {

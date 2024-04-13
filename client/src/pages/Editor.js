@@ -113,7 +113,7 @@ function Editor({ roomid }) {
 
   useEffect(() => {
     // Subscribe to socket events when the component mounts
-    let socketc = io.connect();
+    let socketc = io.connect('http://localhost:3000/');
     setsocketins(socketc);
 
     socketc.emit("join", { roomid, user });
