@@ -28,7 +28,11 @@ const client = new OAuth2Client(CLIENT_ID);
 
 // middlewares
 
-app.use(cors());
+app.use(cors({
+  origin: process.env.FRONTEND_URL,
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE"],
+}));
 app.use(cookieParser());
 app.use(express.json());
 app.use("/room", roomRoute);
