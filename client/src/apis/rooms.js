@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const host = "http://localhost:3000";
+// const host = "http://localhost:3000";
+const host="https://codeshare-aio7.onrender.com"
 
 const getRoomValue = (roomid, user) => {
   return axios.get(`${host}/room/data`, { params: { roomid, user } });
