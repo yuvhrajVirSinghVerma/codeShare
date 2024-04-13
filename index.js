@@ -12,6 +12,7 @@ import memberRoute  from "./routes/members.js";
 import { Server } from 'socket.io';
 import { createServer } from 'http';
 import dotenv from 'dotenv'
+
 dotenv.config({ path: "/.env" })
 const app = express();
 const httpserver = createServer(app); 
@@ -27,12 +28,18 @@ const CLIENT_ID = process.env.CLIENT_ID;
 const client = new OAuth2Client(CLIENT_ID);
 
 // middlewares
-
-app.use(cors({
-  origin: process.env.FRONTEND_URL,
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE"],
-}));
+console.log("process.env.FRONTEND_URL ",process.env.FRONTEND_URL)
+app.use(express.json())
+app.use(express.urlencoded({
+    extended:true
+}))
+app.use(
+    cors({
+      origin: process.env.FRONTEND_URL,
+      credentials: true,
+      methods: ["GET", "POST", "PUT", "DELETE"],
+    })
+  );
 app.use(cookieParser());
 app.use(express.json());
 app.use("/room", roomRoute);
@@ -81,7 +88,7 @@ const io = new Server(server, {
 //   redisAdapter({ host: process.env.REDIS_HOST || "127.0.0.1", port: 6379 })
 // );
 
-console.log(process.env.HOST || 6000)
+// console.log(process.env.HOST || 6000)
 const socketRoomMap = new Map();
 io.on("connection", (client) => {
   client.on("join", (e) => {
